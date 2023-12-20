@@ -1,11 +1,11 @@
 # sql-map
 
-A small library that maps the results of Go's *sql.Rows to map[string]any.
+A small library that maps the results of Go's ```*sql.Rows``` to ```[]map[string]any```.
 
 ## Install
 
 ```sh
-go get github.com/devlights/sql-map@latest
+go get github.com/devlights/sqlmap@latest
 ```
 
 ## Usage

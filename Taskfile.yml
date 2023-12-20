@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  URL: https://www.sqlitetutorial.net/wp-content/uploads/2018/03/chinook.zip
+  ZIPFILE: chinook.zip
+  DBFILE: chinook.db
+
+tasks:
+  download-db:
+    cmds:
+      - wget "{{.URL}}"
+      - unzip "{{.ZIPFILE}}"
+      - rm -rf testdb/
+      - mkdir testdb
+      - mv "{{.DBFILE}}" testdb/
+      - rm -f "{{.ZIPFILE}}"
+  test:
+    cmds:
+      - go test -v ./...

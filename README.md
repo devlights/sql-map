@@ -1,6 +1,6 @@
 # sqlmap
 
-A small library that maps the results of Go's ```*sql.Rows``` to ```[]map[string]any```.
+A small library that maps the results of ```*sql.Rows``` to ```[]map[string]any```.
 
 ## Install
 

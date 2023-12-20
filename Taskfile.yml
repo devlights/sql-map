@@ -16,6 +16,9 @@ tasks:
       - mkdir testdb
       - mv "{{.DBFILE}}" testdb/
       - rm -f "{{.ZIPFILE}}"
+  build:
+    cmds:
+      - go build
   test:
     cmds:
       - go test -v ./...

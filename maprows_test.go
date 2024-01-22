@@ -40,6 +40,11 @@ func TestMapRows(t *testing.T) {
 	}
 
 	for _, v := range m {
-		t.Logf("[row] %v", v)
+		name, err := v.Get("Name")
+		if err != nil {
+			t.Error(err)
+		}
+
+		t.Logf("[row] %v", name)
 	}
 }

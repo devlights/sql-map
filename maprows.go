@@ -2,11 +2,13 @@ package sqlmap
 
 import "database/sql"
 
-// MapRows maps the data in the given *sql.Rows to []map[string]any.
+// MapRows maps the data in the given *sql.Rows to []RowView.
+//
+// RowView is based on map[string]any.
 //
 // This code is based on the ideas presented at the following URL:
 //   - https://kylewbanks.com/blog/query-result-to-map-in-golang
-func MapRows(rows *sql.Rows) ([]map[string]any, error) {
+func MapRows(rows *sql.Rows) ([]RowView, error) {
 	var (
 		cols []string
 		err  error
@@ -18,7 +20,7 @@ func MapRows(rows *sql.Rows) ([]map[string]any, error) {
 	}
 
 	var (
-		result = make([]map[string]any, 0)
+		result = make([]RowView, 0)
 	)
 
 	for rows.Next() {
@@ -37,7 +39,7 @@ func MapRows(rows *sql.Rows) ([]map[string]any, error) {
 		}
 
 		var (
-			m = make(map[string]any)
+			m = make(RowView)
 		)
 
 		for i, name := range cols {

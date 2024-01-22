@@ -27,7 +27,7 @@ rows, _ := db.Query("SELECT * FROM xxxxx")
 defer rows.Close()
 
 var (
-    mapRows []map[string]any
+    mapRows []RowView
 )
 
 mapRows, err := sqlmap.MapRows(rows)
@@ -36,4 +36,13 @@ if err != nil {
 }
 
 fmt.Println(mapRows)
+
+for _, v := range m {
+    name, err := v.Get("Name")
+    if err != nil {
+        t.Error(err)
+    }
+
+    fmt.Printf("[row] %v\n", name)
+}
 ```
